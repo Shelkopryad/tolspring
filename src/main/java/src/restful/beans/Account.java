@@ -1,8 +1,5 @@
-package src.restful;
+package src.restful.beans;
 
-/**
- * Created by Svirin2-DA on 10.12.2018.
- */
 public class Account {
 
     private double balance;

@@ -1,14 +1,11 @@
 package src.restful.services;
 
-import src.restful.Order;
+import src.restful.beans.Order;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
-/**
- * Created by Svirin2-DA on 11.12.2018.
- */
 public class OrderService {
 
     private AtomicLong id = new AtomicLong(0L);

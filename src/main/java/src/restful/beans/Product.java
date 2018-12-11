@@ -1,25 +1,21 @@
-package src.restful;
+package src.restful.beans;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- * Created by Svirin2-DA on 11.12.2018.
- */
 public class Product {
 
-    private int id;
+    private static Long id;
     private String name;
-    private BigDecimal price;
+    private Double price;
     private boolean inStock;
     private List<Comment> comments;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public Product() {
+        if (id == null) {
+            id = 0L;
+        }
+        id += 1;
     }
 
     public String getName() {
@@ -30,11 +26,11 @@ public class Product {
         this.name = name;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

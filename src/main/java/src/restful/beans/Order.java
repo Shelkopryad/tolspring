@@ -1,11 +1,8 @@
-package src.restful;
+package src.restful.beans;
 
 import java.util.Calendar;
 import java.util.List;
 
-/**
- * Created by Svirin2-DA on 11.12.2018.
- */
 public class Order {
 
     private int id;

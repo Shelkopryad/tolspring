@@ -1,10 +1,7 @@
-package src.restful;
+package src.restful.beans;
 
 import java.math.BigDecimal;
 
-/**
- * Created by Svirin2-DA on 11.12.2018.
- */
 public class OrderLine {
 
     private Product product;

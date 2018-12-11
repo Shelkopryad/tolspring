@@ -1,14 +1,15 @@
-package src.restful;
+package src.restful.beans;
 
-/**
- * Created by Svirin2-DA on 10.12.2018.
- */
-public class User {
+import java.util.Calendar;
 
+public class Customer {
+
+    private int id;
     private String login;
     private Account account;
+    private Calendar customerSince;
 
-    public User(String login, Account account) {
+    public Customer(String login, Account account) {
         this.login = login;
         this.account = account;
     }

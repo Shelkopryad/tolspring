@@ -1,14 +1,11 @@
 package src.restful.services;
 
-import src.restful.Comment;
+import src.restful.beans.Comment;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
-/**
- * Created by Svirin2-DA on 11.12.2018.
- */
 public class CommentService {
 
     private AtomicLong id = new AtomicLong(0L);
@@ -22,6 +19,10 @@ public class CommentService {
 
     public Map<Long, Comment> getComments() {
         return comments;
+    }
+
+    public void setComment(Comment comment) {
+        this.comments.put(id.incrementAndGet(), comment);
     }
 
     public void setComments(Map<Long, Comment> comments) {

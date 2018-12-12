@@ -7,6 +7,7 @@ public class Customer {
     private int id;
     private String login;
     private Account account;
+    private Order order;
     private Calendar customerSince;
 
     public Customer(String login, Account account) {
@@ -16,6 +17,14 @@ public class Customer {
 
     public String getLogin() {
         return this.login;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public Account getAccount() {

@@ -5,7 +5,7 @@ import src.restful.beans.*;
 import src.restful.services.*;
 
 @RestController
-public class GreetingController {
+public class OrderController {
 
     OrderService orderService = new OrderService();
     CustomerService customerService = new CustomerService();
@@ -56,6 +56,19 @@ public class GreetingController {
         Product product = productService.getById(id);
         product.setInStock(false);
         return product;
+    }
+
+    @RequestMapping(value = "customer/{cid}/order/{oid}/product/{pid}/add", method = RequestMethod.POST)
+    public Order addProductToOrder(@PathVariable(value = "cid") long cid, @PathVariable(value = "oid") long oid, @PathVariable(value = "oid") long pid) {
+        Customer customer = customerService.getById(cid);
+        Order order = orderService.getById(oid);
+        OrderLine orderLine = new OrderLine();
+        Product product = productService.getById(pid);
+        orderLine.setProduct(product);
+        orderLine.setAmount(product.getPrice());
+        order.setOrderLine(orderLine);
+        customer.setOrder(order);
+        return order;
     }
 
 }

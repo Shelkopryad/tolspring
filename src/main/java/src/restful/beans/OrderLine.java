@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class OrderLine {
 
     private Product product;
-    private int amount;
+    private Double amount;
     private BigDecimal purchasePrice;
 
     public Product getProduct() {
@@ -16,11 +16,11 @@ public class OrderLine {
         this.product = product;
     }
 
-    public int getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 

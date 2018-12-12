@@ -7,7 +7,6 @@ public class Order {
 
     private int id;
     private Calendar date;
-    private Customer customer;
     private List<OrderLine> orderLines;
 
     public int getId() {
@@ -26,16 +25,12 @@ public class Order {
         this.date = date;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public List<OrderLine> getOrderLines() {
         return orderLines;
+    }
+
+    public void setOrderLine(OrderLine orderLine) {
+        this.orderLines.add(orderLine);
     }
 
     public void setOrderLines(List<OrderLine> orderLines) {

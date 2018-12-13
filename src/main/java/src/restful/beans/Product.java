@@ -1,6 +1,6 @@
 package src.restful.beans;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
@@ -51,6 +51,9 @@ public class Product {
     }
 
     public void setComment(Comment comment) {
+        if (this.comments == null) {
+            comments = new ArrayList<Comment>();
+        }
         this.comments.add(comment);
     }
 }

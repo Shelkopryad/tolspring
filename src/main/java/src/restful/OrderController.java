@@ -2,7 +2,10 @@ package src.restful;
 
 import org.springframework.web.bind.annotation.*;
 import src.restful.beans.*;
-import src.restful.services.*;
+import src.restful.services.CommentService;
+import src.restful.services.CustomerService;
+import src.restful.services.OrderService;
+import src.restful.services.ProductService;
 
 @RestController
 public class OrderController {
@@ -12,16 +15,26 @@ public class OrderController {
     ProductService productService = new ProductService();
     CommentService commentService = new CommentService();
 
-    @RequestMapping(value = "/order/{id}", method = RequestMethod.GET)
-    public Order orderById(@PathVariable(value = "id") int id) {
-        return orderService.getById(id);
-    }
-
     @RequestMapping(value = "/user/create", method = RequestMethod.POST)
     public Customer createUser(@RequestParam(value = "name") String name, @RequestParam(value = "balance") double balance) {
         Customer customer = new Customer(name, new Account(balance));
         customerService.addCustomer(customer);
         return customer;
+    }
+
+    @RequestMapping(value = "/customer/{id}", method = RequestMethod.GET)
+    public Customer getCustomerById(@PathVariable(value = "id") int id) {
+        return customerService.getById(id);
+    }
+
+    @RequestMapping(value = "/order/{id}", method = RequestMethod.GET)
+    public Order getOrderById(@PathVariable(value = "id") int id) {
+        return orderService.getById(id);
+    }
+
+    @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
+    public Product getProductById(@PathVariable(value = "id") int id) {
+        return productService.getById(id);
     }
 
     @RequestMapping(value = "/product/create", method = RequestMethod.POST)
@@ -58,16 +71,17 @@ public class OrderController {
         return product;
     }
 
-    @RequestMapping(value = "customer/{cid}/order/{oid}/product/{pid}/add", method = RequestMethod.POST)
-    public Order addProductToOrder(@PathVariable(value = "cid") long cid, @PathVariable(value = "oid") long oid, @PathVariable(value = "oid") long pid) {
+    @RequestMapping(value = "customer/{cid}/order/product/{pid}/add", method = RequestMethod.POST)
+    public Order addProductToOrder(@PathVariable(value = "cid") long cid, @PathVariable(value = "pid") long pid) {
         Customer customer = customerService.getById(cid);
-        Order order = orderService.getById(oid);
+        Order order = customer.getOrder();
         OrderLine orderLine = new OrderLine();
         Product product = productService.getById(pid);
         orderLine.setProduct(product);
         orderLine.setAmount(product.getPrice());
         order.setOrderLine(orderLine);
         customer.setOrder(order);
+        orderService.setOrder(order);
         return order;
     }
 

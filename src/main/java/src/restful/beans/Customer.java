@@ -20,7 +20,7 @@ public class Customer {
     }
 
     public Order getOrder() {
-        return order;
+        return order == null ? new Order() : order;
     }
 
     public void setOrder(Order order) {

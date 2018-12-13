@@ -1,11 +1,13 @@
 package src.restful;
 
 import org.springframework.web.bind.annotation.*;
-import src.restful.beans.*;
-import src.restful.services.CommentService;
-import src.restful.services.CustomerService;
-import src.restful.services.OrderService;
-import src.restful.services.ProductService;
+import src.restful.beans.Account;
+import src.restful.beans.Comment;
+import src.restful.beans.Customer;
+import src.restful.beans.Order;
+import src.restful.beans.OrderLine;
+import src.restful.beans.Product;
+import src.restful.services.*;
 
 @RestController
 public class OrderController {
@@ -35,6 +37,12 @@ public class OrderController {
     @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
     public Product getProductById(@PathVariable(value = "id") int id) {
         return productService.getById(id);
+    }
+
+    @RequestMapping(value = "/customer/{id}/account", method = RequestMethod.GET)
+    public Account getCustomerBalance(@PathVariable(value = "id") int id) {
+        Customer customer = customerService.getById(id);
+        return customer.getAccount();
     }
 
     @RequestMapping(value = "/product/create", method = RequestMethod.POST)
